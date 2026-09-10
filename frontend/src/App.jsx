@@ -1,3 +1,4 @@
+import Services from './components/Services'
 import Hero from './components/Hero'
 import Header from './components/Header'
 import './App.css'
@@ -7,6 +8,7 @@ function App() {
     <>
       <Header />
       <Hero />
+      <Services />
     </>
   )
 }

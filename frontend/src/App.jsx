@@ -1,3 +1,4 @@
+import Footer from './components/Footer'
 import Services from './components/Services'
 import Hero from './components/Hero'
 import Header from './components/Header'
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Hero />
       <Services />
+      <Footer />
     </>
   )
 }

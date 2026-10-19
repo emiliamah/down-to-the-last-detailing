@@ -272,3 +272,161 @@ button.book-btn {
     border: none;
   }
 }
+
+/* Dedicated booking page */
+
+.booking-page {
+  min-height: 80vh;
+  padding: 3rem 1.5rem 5rem;
+  background: #0d0d0d;
+}
+
+.booking-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.booking-back {
+  background: transparent;
+  border: none;
+  color: #9fe1cb;
+  font: inherit;
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+}
+
+.booking-back:hover {
+  text-decoration: underline;
+}
+
+.booking-heading {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.booking-eyebrow {
+  display: block;
+  color: #9fe1cb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.75rem;
+}
+
+.booking-heading h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+
+.booking-heading p {
+  color: #aaa;
+}
+
+.booking-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  background: #161616;
+  border: 1px solid #303030;
+  border-radius: 14px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.booking-label {
+  display: block;
+  color: #9fe1cb;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.booking-summary h2 {
+  font-size: 1.4rem;
+}
+
+.booking-summary p,
+.booking-summary-price span {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.booking-summary-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+
+.booking-summary-price strong {
+  color: #9fe1cb;
+  font-size: 1.8rem;
+}
+
+.booking-calendar {
+  background: #161616;
+  border: 1px solid #303030;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.booking-calendar-heading {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid #303030;
+}
+
+.booking-calendar-heading h2 {
+  font-size: 1.25rem;
+}
+
+.booking-calendar-heading p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.booking-iframe {
+  display: block;
+  width: 100%;
+  height: 800px;
+  border: none;
+  background: #fff;
+}
+
+.booking-help {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  color: #9fe1cb;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-top: 1px solid #303030;
+}
+
+.booking-help:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .booking-page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .booking-summary {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+
+  .booking-summary-price {
+    align-items: flex-start;
+  }
+
+  .booking-calendar-heading {
+    padding: 1.25rem;
+  }
+
+  .booking-iframe {
+    height: 750px;
+  }
+}

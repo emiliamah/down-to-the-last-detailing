@@ -1,12 +1,3 @@
-import { useState, useEffect } from "react"
-
-const ACUITY_ACCOUNT = "f247931e"
-const ACUITY_CALENDAR = "12919855"
-
-function bookingLink(appointmentId) {
-    return `https://app.acuityscheduling.com/schedule/${ACUITY_ACCOUNT}/appointment/${appointmentId}/calendar/${ACUITY_CALENDAR}`
-}
-
 const services = [
     {
         name: "Exterior Car Wash",
@@ -66,82 +57,32 @@ const services = [
     },
 ]
 
-function ServiceCard({ name, price, duration, description, onBook }) {
+function ServiceCard({ service, onBook }) {
     return (
         <div className="card">
-            <h3>{name}</h3>
-            <p className="price">Starting at {price} · {duration}</p>
-            <p>{description}</p>
-            <button className="book-btn" onClick={onBook}>
+            <h3>{service.name}</h3>
+            <p className="price">
+                Starting at {service.price} · {service.duration}
+            </p>
+            <p>{service.description}</p>
+            <button className="book-btn" onClick={() => onBook(service)}>
                 Book Now
             </button>
         </div>
     )
 }
 
-function BookingModal({ service, onClose }) {
-    useEffect(() => {
-        function handleKeyDown(event) {
-            if (event.key === "Escape") onClose()
-        }
-        document.addEventListener("keydown", handleKeyDown)
-        document.body.style.overflow = "hidden"
-
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown)
-            document.body.style.overflow = ""
-        }
-    }, [onClose])
-
-    const url = bookingLink(service.appointmentId)
-
-    return (
-        <div className="modal-backdrop" onClick={onClose}>
-            <div
-                className="modal"
-                role="dialog"
-                aria-modal="true"
-                aria-label={`Book ${service.name}`}
-                onClick={(event) => event.stopPropagation()}
-            >
-                <div className="modal-header">
-                    <h3>Book: {service.name}</h3>
-                    <button className="modal-close" onClick={onClose} aria-label="Close">
-                        ✕
-                    </button>
-                </div>
-                <iframe className="modal-frame" src={url} title={`Book ${service.name}`} />
-                <a className="modal-fallback" href={url} target="_blank" rel="noopener noreferrer">
-                    Having trouble? Open booking in a new tab
-                </a>
-            </div>
-        </div>
-    )
-}
-
-function Services() {
-    const [selectedService, setSelectedService] = useState(null)
-
+function Services({ onBook }) {
     return (
         <section id="services">
             <h2>Our Services</h2>
             <p className="note">Pricing varies by vehicle make and model</p>
+
             <div className="grid">
                 {services.map((service) => (
-                    <ServiceCard
-                        key={service.name}
-                        {...service}
-                        onBook={() => setSelectedService(service)}
-                    />
+                    <ServiceCard key={service.name} service={service} onBook={onBook} />
                 ))}
             </div>
-
-            {selectedService && (
-                <BookingModal
-                    service={selectedService}
-                    onClose={() => setSelectedService(null)}
-                />
-            )}
         </section>
     )
 }
